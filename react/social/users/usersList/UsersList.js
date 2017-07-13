@@ -20,7 +20,7 @@ class UsersList extends React.Component {
                 </li>
     }
 
-    render(){
+    render() {
         if(this.props.isLoading)
             return <nav className="users-list">Loading...</nav>;
 

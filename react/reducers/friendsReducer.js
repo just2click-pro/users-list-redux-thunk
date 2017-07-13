@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import {ADD_USER, GET_USERS_LIST_RESPONSE, GET_USERS_LIST_REQUEST, REMOVE_USER} from "../actions";
+import {ADD_USER, GET_USER_RESPONSE, GET_USERS_LIST_RESPONSE, GET_USERS_LIST_REQUEST, REMOVE_USER, GET_POSTS_RESPONSE} from "../actions";
 
 import selectedUserReducer from "./selectedUserReducer";
 
