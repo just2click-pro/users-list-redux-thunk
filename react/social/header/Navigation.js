@@ -19,6 +19,7 @@ class Navigation extends React.Component {
                     <span>Hello, {this.props.user.name}</span>
                     <NavLink exact to="/" activeClassName="active">About</NavLink>
                     <NavLink to="/users" activeClassName="active">Users</NavLink>
+                    <NavLink to="/friends" activeClassName="active">Friends</NavLink>
                     <button onClick={ ()=> this.logout() }>Log out</button>
                 </header>);
     }

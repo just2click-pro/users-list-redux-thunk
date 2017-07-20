@@ -1,6 +1,7 @@
 import * as ACTIONS from "./index";
 import UsersService from "../services/UserService";
 import PostsService from "../services/PostsService";
+import FriendsService from "../services/FriendsService";
 
 export function addUser(user){
     return { type: ACTIONS.ADD_USER, user };
@@ -8,10 +9,6 @@ export function addUser(user){
 
 export function removeUser(user){
     return { type: ACTIONS.REMOVE_USER, user };
-}
-
-export function selectUser(user){
-    return { type: ACTIONS.SELECT_USER, user };
 }
 
 export function logIn(user){
@@ -22,30 +19,8 @@ export function logOut(){
     return { type: ACTIONS.LOG_OUT };
 }
 
-export function getUser(userId) {
-    return dispatch => {
-        dispatch({ type: ACTIONS.GET_USER_REQUEST });
-
-        UsersService.getUser(userId)
-            .then( user => {
-                return dispatch({ type: ACTIONS.GET_USER_RESPONSE, user })
-            });
-
-        // Promise.all([UsersService.getUser(userId), PostsService.getPosts(userId)])
-        //     .then( ([user,posts]) => dispatch( { type: ACTIONS.GET_USER_RESPONSE, user, posts} ));             
-        // }
-    }
-}
-
-export function getPosts(userId) {
-    return dispatch => {
-        dispatch({ type: ACTIONS.GET_USER_REQUEST });
-
-        PostsService.getPosts(userId)
-            .then( posts => {
-                return dispatch({ type: ACTIONS.GET_USER_RESPONSE, posts })
-            });
-    }
+export function setPosts(posts){
+    return { type: ACTIONS.SET_POSTS, posts };
 }
 
 export function getUsersList(){
@@ -57,3 +32,28 @@ export function getUsersList(){
     }
 }
 
+export function getUser(id){
+    return dispatch => {
+        dispatch( { type: ACTIONS.GET_USER_REQUEST} );
+
+        Promise.all([UsersService.getUser(id), PostsService.getPosts(id)])
+            .then( ([user,posts]) => dispatch( { type: ACTIONS.GET_USER_RESPONSE, user, posts} ));
+    }
+}
+
+export function addFriend (user) {
+    return { type: ACTIONS.ADD_FRIEND, user }
+}
+
+export function removeFriend (user) {
+    return { type: ACTIONS.REMOVE_FRIEND, user }
+}
+
+export function getFriendsList () {
+    return dispatch => {
+        dispatch({ type: ACTIONS.GET_FRIENDS_LIST_REQUEST })
+
+        FriendsService.getFriends()
+            .then( friends => dispatch( { type: ACTIONS.GET_FRIENDS_LIST_RESPONSE, friends } ) );
+    }
+}

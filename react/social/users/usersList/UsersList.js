@@ -20,7 +20,7 @@ class UsersList extends React.Component {
                 </li>
     }
 
-    render() {
+    render(){
         if(this.props.isLoading)
             return <nav className="users-list">Loading...</nav>;
 
@@ -35,8 +35,8 @@ class UsersList extends React.Component {
 
 function mapStateToProps(state){
     return {
-        users: state.friends.usersList,
-        isLoading: state.friends.isLoading
+        users: state.users.usersList,
+        isLoading: state.users.isLoading
     }
 }
 

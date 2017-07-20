@@ -1,16 +1,17 @@
 import {combineReducers} from "redux";
-import {ADD_USER, GET_USER_RESPONSE, GET_USERS_LIST_RESPONSE, GET_USERS_LIST_REQUEST, REMOVE_USER, GET_POSTS_RESPONSE} from "../actions";
+import { 
+    ADD_FRIEND, REMOVE_FRIEND, 
+    GET_FRIENDS_LIST_REQUEST, 
+    GET_FRIENDS_LIST_RESPONSE } from "../actions";
 
-import selectedUserReducer from "./selectedUserReducer";
-
-function usersListReducer(state = [], action){
+function friendsReducer(state = [], action){
     switch (action.type){
-        case ADD_USER:
-            return [...state, action.user];
-        case REMOVE_USER:
-            return state.filter(user => user != action.user);
-        case GET_USERS_LIST_RESPONSE:
-            return [...action.users];
+        case ADD_FRIEND:
+            return [...state, action.friend];
+        case REMOVE_FRIEND:
+            return state.filter(friend => friend != action.friend);
+        case GET_FRIENDS_LIST_RESPONSE:
+            return [...action.friends];
     }
 
     return state;
@@ -19,18 +20,15 @@ function usersListReducer(state = [], action){
 function isLoadingReducer(state = false, action){
 
     switch (action.type){
-        case GET_USERS_LIST_RESPONSE:
+        case GET_FRIENDS_LIST_RESPONSE:
             return false;
-        case GET_USERS_LIST_REQUEST:
+        case GET_FRIENDS_LIST_REQUEST:
             return true;
     }
 
     return state;
 }
-
-
 export default combineReducers({
-    usersList: usersListReducer,
-    selectedUser: selectedUserReducer,
+    friends: friendsReducer,
     isLoading: isLoadingReducer
 });

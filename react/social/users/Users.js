@@ -1,11 +1,12 @@
 import React from "react";
 import UserPage from "./userPage/UserPage";
 import UsersList from "./usersList/UsersList";
+import {connect} from "react-redux";
 import {Route} from "react-router";
 
 import '../../main.scss';
 
-class Users extends React.Component {
+export default class Users extends React.Component {
 
     render(){
         return (<div>
@@ -14,5 +15,3 @@ class Users extends React.Component {
                 </div>)
     }
 }
-
-export default Users;

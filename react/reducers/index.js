@@ -1,8 +1,10 @@
 import {combineReducers} from "redux";
-import friendsReducers from "./friendsReducer";
+import friendsReducer from "./friendsReducer";
 import loggedInUserReducer from "./loggedInUserReducer";
+import usersReducer from "./usersReducer";
 
 export default combineReducers({
-    friends: friendsReducers,
-    loggedInUser: loggedInUserReducer
+    users: usersReducer,
+    loggedInUser: loggedInUserReducer,
+    friends: friendsReducer
 });

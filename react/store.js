@@ -9,13 +9,18 @@ import thunk from "redux-thunk";
 
 const state = {
     loggedInUser: LoginService.get(),
-    friends: {
+    users: {
         isLoading: false,
         usersList: [],
         selectedUser: {
             details: null,
             posts: null
         }
+    },
+    friends: {
+        friendsList: [],
+        isLoading: false,
+
     }
 };
 
